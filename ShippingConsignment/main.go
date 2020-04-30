@@ -14,6 +14,7 @@ const port =":50051"
 
 type repository interface{
 	Create(*pb.Consignment)(*pb.Consignment,error)
+	GetAll()[]*pb.Consignment
 }
 
 type Repository struct {
@@ -27,6 +28,10 @@ func (repo *Repository) Create(consignment *pb.Consignment) (*pb.Consignment, er
 	repo.consignments = updated
 	repo.mu.Unlock()
 	return consignment, nil
+}
+
+func (repo *Repository) GetAll() []*pb.Consignment{
+	return repo.consignments
 }
 
 type service struct {
@@ -43,6 +48,11 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment) (*
 
 }
 
+func (s *service) GetConsignment(ctx context.Context,req *pb.GetRequest) (*pb.Response,error){
+    consignments := s.repo.GetAll()
+	return &pb.Response{Consignments: consignments}, nil
+}
+
 func main(){
 	repo:=&Repository{}
 	lis, err := net.Listen("tcp", port)
@@ -56,4 +66,5 @@ func main(){
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
+	
 }
