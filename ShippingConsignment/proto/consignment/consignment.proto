@@ -6,6 +6,7 @@ option go_package = "proto/consignment";
 
 service ShippingService {
   rpc CreateConsignment(Consignment) returns (Response) {}
+  rpc GetConsignment(GetRequest) returns (Response){}
 }
 
 message Consignment {
@@ -26,4 +27,8 @@ message Container {
 message Response {
   bool created = 1;
   Consignment consignment = 2;
+  repeated Consignment consignments=3;
+}
+
+message GetRequest {
 }
