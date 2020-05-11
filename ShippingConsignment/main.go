@@ -57,7 +57,7 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	return nil
 }
 
-func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, res *pb.Response) error {
+func (s *service) GetConsignment(ctx context.Context, req *pb.GetRequest, res *pb.Response) error {
 	consignments := s.repo.GetAll()
 	res.Consignments = consignments
 	return nil
@@ -78,7 +78,8 @@ func main() {
 	srv.Init()
 
 	// Register handler
-	pb.RegisterShippingServiceHandler(srv.Server(), &service{repo})
+	s:=srv.Server()
+	pb.RegisterShippingServiceHandler(s, &service{repo})
 
 	// Run the server
 	if err := srv.Run(); err != nil {
