@@ -3,7 +3,10 @@ module gRPCtutorial
 go 1.12
 
 require (
+	github.com/beevik/ntp v0.2.0 // indirect
+	github.com/bwmarrin/discordgo v0.20.1 // indirect
 	github.com/creack/pty v1.1.10 // indirect
+	github.com/forestgiant/sliceutil v0.0.0-20160425183142-94783f95db6c // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.0.0 // indirect
 	github.com/go-git/go-git v4.7.0+incompatible // indirect
@@ -21,6 +24,7 @@ require (
 	github.com/mitchellh/hashstructure v1.0.0 // indirect
 	github.com/nats-io/go-nats v1.7.2 // indirect
 	github.com/nats-io/nats.go v1.9.2 // indirect
+	github.com/nlopes/slack v0.6.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rogpeppe/go-internal v1.5.2 // indirect

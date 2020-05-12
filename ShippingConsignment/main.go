@@ -7,7 +7,7 @@ import (
     // Import the generated protobuf code
 	pb "gRPCtutorial/ShippingConsignment/proto/consignment"
 	"github.com/micro/go-micro"
-	"context"
+	"golang.org/x/net/context"
 )
 
 type repository interface {
