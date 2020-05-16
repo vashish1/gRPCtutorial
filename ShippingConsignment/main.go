@@ -5,7 +5,7 @@ import (
 	"fmt"
     
     // Import the generated protobuf code
-	pb "gRPCtutorial/ShippingConsignment/proto/consignment"
+	pb "github.com/vashish1/gRPCtutorial/ShippingConsignment/proto/consignment"
 	"github.com/micro/go-micro"
 	"golang.org/x/net/context"
 )

@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	pb "gRPCtutorial/ShippingConsignment/proto/consignment"
+	pb "github.com/vashish1/gRPCtutorial/ShippingConsignment/proto/consignment"
 
 	micro "github.com/micro/go-micro"
 )
@@ -31,7 +31,7 @@ func parseFile(file string) (*pb.Consignment, error) {
 func main() {
 	service := micro.NewService(micro.Name("shippy.cli.consignment"))
 	service.Init()
-    c:=service.Client()
+	c := service.Client()
 	client := pb.NewShippingServiceClient("shippy.service.consignment", c)
 
 	// Contact the server and print out its response.
