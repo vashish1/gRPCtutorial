@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	pb "gRPCtutorial/ShippingConsignment/proto/consignment"
+	pb "github.com/vashish1/gRPCtutorial/ShippingConsignment/proto/consignment"
 
 	micro "github.com/micro/go-micro"
 )
