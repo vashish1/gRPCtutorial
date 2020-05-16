@@ -31,7 +31,7 @@ func parseFile(file string) (*pb.Consignment, error) {
 func main() {
 	service := micro.NewService(micro.Name("shippy.cli.consignment"))
 	service.Init()
-    c:=service.Client()
+	c := service.Client()
 	client := pb.NewShippingServiceClient("shippy.service.consignment", c)
 
 	// Contact the server and print out its response.
