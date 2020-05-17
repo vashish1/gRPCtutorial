@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"
+	// "github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"
 	pb "github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -37,7 +38,7 @@ type MongoRepository struct{
 
 func (repo MongoRepository)FindVessel(ctx context.Context,spec *pb.Specification ) (*pb.Vessel, error){
 	  specs:=unmarshalSpecs(spec)
-	  vessel,err:=Find(repo.collection,specs,ctx)
+	  vessel,err:=find(repo.collection,specs,ctx)
 	  if err!=nil{
 		  return &pb.Vessel{},nil
 	  }
@@ -45,12 +46,15 @@ func (repo MongoRepository)FindVessel(ctx context.Context,spec *pb.Specification
 }
 
 func (repo MongoRepository)CreateVessel(ctx context.Context,vessel *pb.Vessel)(*pb.Response,error){
-	vessels:=unmarshalVessel(vessel)
-	vessel,err:=Insert(repo.collection,vessels,ctx)
+	v:=unmarshalVessel(vessel)
+	fmt.Print(v)
+	// var vessel Vessel
+	ves,err:=enterintothis(repo.collection,v,ctx)
 	if err!=nil{
 		return &pb.Response{},err
 	}
-	return marshalResponse(vessel)
+	return marshalResponse(ves)
+	// return &pb.Response{},nil
 }
 
 

@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/mongodb/mongo-go-driver/bson"
-	"github.com/mongodb/mongo-go-driver/bson/primitive"
-	"go.mongodb.org/mongodb/mongo-go-driver/mongo"
-	"go.mongodb.org/mongodb/mongo-go-driver/mongo/options"
+     
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 // CreateClient -
@@ -26,7 +26,7 @@ func CreateClient(ctx context.Context, uri string, retry int32) (*mongo.Client, 
 	return conn, err
 }
 
-func Find(c *mongo.Collection, s Specification, ctx context.Context) (Vessel, error) {
+func find(c *mongo.Collection, s Specification, ctx context.Context) (Vessel, error) {
 	filter := bson.D{
 		primitive.E{Key: "capacity", Value: s.Capacity},
 		primitive.E{Key: "maxweight", Value: s.MaxWeight}}
@@ -40,7 +40,7 @@ func Find(c *mongo.Collection, s Specification, ctx context.Context) (Vessel, er
 	return result, nil
 }
 
-func Insert(c *mongo.Collection, v Vessel, ctx context.Context) (Vessel, error) {
+func enterintothis(c *mongo.Collection, v Vessel, ctx context.Context) (Vessel, error) {
 
 	insertResult, err := c.InsertOne(ctx, v)
 	if err != nil {

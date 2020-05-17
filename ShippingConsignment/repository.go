@@ -1,11 +1,8 @@
 package main
 
 import (
-
-	// Import the generated protobuf code
-	// "github.com/micro/go-micro"
-	// "github.com/mongodb/mongo-go-driver/mongo"
-	"github.com/mongo-go-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
+	
 	pb "github.com/vashish1/gRPCtutorial/ShippingConsignment/proto/consignment"
 
 	// vesselProto "github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"

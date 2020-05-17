@@ -7,11 +7,12 @@ import (
 	"os"
 
 	"github.com/micro/go-micro"
+	pb "github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"
 		
 )
 
 const (
-	defaultHost = "datastore:27017"
+	defaultHost = "mongodb://localhost:27017"
 )
 
 func main() {
