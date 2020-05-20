@@ -34,6 +34,8 @@ func main() {
 	)
 
 	srv.Init()
+
+	// pubsub := srv.Server().Options().Broker
 	pb.RegisterUserServiceHandler(srv.Server(), &service{repo, tokenService})
 
 	// Run the server

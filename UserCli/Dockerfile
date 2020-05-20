@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && \
 RUN mkdir /cli
 WORKDIR  /cli
 
-COPY ..
+COPY . .
 
 #RUN GO GET COMMAND TO GET ALL THE PACKAGES
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o UserCli
