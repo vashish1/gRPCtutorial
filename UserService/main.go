@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultHost = "mongodb://localhost:27017"
+	defaultHost = "localhost:27017"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	tokenService := &Token{}
 
 	srv := micro.NewService(
-		micro.Name("shippy.service.user"),
+		micro.Name("go.micro.srv.user"),
 	)
 
 	srv.Init()

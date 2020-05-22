@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	pb "github.com/vashish1/gRPCtutorial/UserService/proto/user"
@@ -62,10 +63,12 @@ func (srv *service) Create(ctx context.Context, req *pb.User, res *pb.Response) 
 		// Generates a hashed version of our password
 		hashedPass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
 		if err != nil {
+			fmt.Print("1")
 			return err
 		}
 		req.Password = string(hashedPass) 
 		if err := srv.repo.Create(ctx,req); err != nil {
+			fmt.Print("2")
 			return err
 		}
 		res.User = req
