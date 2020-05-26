@@ -9,8 +9,8 @@ import (
 	pb "github.com/vashish1/gRPCtutorial/UserService/proto/user"
 )
 
-const (
-	defaultHost = "localhost:27017"
+var (
+	defaultHost = os.Getenv("MongoUrl")
 )
 
 func main() {

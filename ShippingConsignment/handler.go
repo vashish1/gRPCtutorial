@@ -2,7 +2,8 @@ package main
 
 import (
 	"errors"
-    
+	"fmt"
+
 	pb "github.com/vashish1/gRPCtutorial/ShippingConsignment/proto/consignment"
 
 	vesselProto "github.com/vashish1/gRPCtutorial/ShippingVessel/proto/vessel"
@@ -26,14 +27,25 @@ func (s *handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 		MaxWeight: req.Weight,
 		Capacity:  int32(len(req.Containers)),
 	})
-	if vesselResponse == nil {
-		return errors.New("error fetching vessel, returned nil")
+	v := &vesselProto.Vessel{
+		MaxWeight: req.Weight,
+		Capacity:  int32(len(req.Containers)),
+		Name:      "Number 1.",
 	}
-
-	if err != nil {
+	if vesselResponse == nil {
+		fmt.Println("11")
+		resp, err := s.vesselClient.Create(ctx, v)
+		fmt.Println("Vessel created when not found",resp)
+		if err!=nil{
+			fmt.Print(err)
+			return errors.New("error fetching vessel and creating vessel, returned nil")
+		}
+	}
+    fmt.Println("12")
+	if err != nil{
 		return err
 	}
-
+    
 	// We set the VesselId as the vessel we got back from our
 	// vessel service
 	req.VesselId = vesselResponse.Vessel.Id

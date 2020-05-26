@@ -105,14 +105,9 @@ func (repository *MongoRepository) Create(ctx context.Context, consignment *Cons
 
 // GetAll -
 func (repository *MongoRepository) GetAll(ctx context.Context) ([]*Consignment, error) {
-	cur, err := repository.collection.Find(ctx, nil, nil)
-	var consignments []*Consignment
-	for cur.Next(ctx) {
-		var consignment *Consignment
-		if err := cur.Decode(&consignment); err != nil {
-			return nil, err
-		}
-		consignments = append(consignments, consignment)
-	}
-	return consignments, err
+consignments,err:=Find(repository.collection,ctx)
+if err!=nil{
+	return []*Consignment{},err
+}
+return consignments,err
 }

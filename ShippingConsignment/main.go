@@ -26,8 +26,8 @@ func main() {
 	srv := micro.NewService(
 
 		// This name must match the package name given in your protobuf definition
-		micro.Name("go.micro.srv.consignment"),
-		micro.Version("latest"),
+		micro.Name("shipping.consignment"),
+		// micro.Version("latest"),
 		// Our auth middleware
 		micro.WrapHandler(AuthWrapper),
 	)
@@ -47,7 +47,7 @@ func main() {
 	consignmentCollection := client.Database("shipping").Collection("consignments")
 
 	repository := &MongoRepository{consignmentCollection}
-	vesselClient := vesselProto.NewVesselServiceClient("shippy.service.client", srv.Client())
+	vesselClient := vesselProto.NewVesselServiceClient("shippy.service.vessel", srv.Client())
 	h := &handler{repository, vesselClient}
 
 	// Register handlers
