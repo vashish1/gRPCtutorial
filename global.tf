@@ -43,13 +43,13 @@ resource "google_container_cluster" "shippy-freight-cluster" {
   name = "shippy-freight-cluster"
   network = "${google_compute_network.shippy-network.name}"
   subnetwork = "${google_compute_subnetwork.shippy-freight.name}"
-  zone = "${var.gcloud-zone}"
+  location = "${var.gcloud-zone}"
 
   initial_node_count = 1
 
   master_auth {
-    username = <redacted>
-    password = <redacted>
+    username = ""
+    password = ""
   }
 
   node_config {
