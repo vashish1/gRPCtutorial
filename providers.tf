@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "${file("google-cred.json")}"
+  credentials = "${file("<file>.json")}"
   project     = "${var.gcloud-project}"
   region      = "${var.gcloud-region}"
 }
